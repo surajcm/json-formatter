@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Udemy JSON Formatter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <link href="styles/index.css" rel="stylesheet" />
+    <link href="styles/core/bootstrap-5.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="scripts/index.js"></script>
+</head>
+<body>
+<div class="d-md-flex h-md-100 align-items-center">
+
+    <!-- First Half -->
+    <div class="col-md-6 p-0 bg-indigo h-md-100">
+        <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+            <div class="logoarea pt-5 pb-5">
+                <form class="row g-3">
+                    <div class="col-auto">
+                        <input class="form-control" type="file" id="questionFile">
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" onclick="getQuestion();" class="btn btn-primary mb-3">Fetch Question</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Half -->
+    <div class="col-md-6 p-0 bg-white h-md-100 loginarea">
+        <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+            <div id="content"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/scripts/core/bootstrap-5.min.js"></script>
+</body>
+</html>

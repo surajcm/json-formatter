@@ -8,14 +8,16 @@ function getQuestion() {
     let files = questionFile.files;
     let file = files[0];
 
-    formData.append('upload', file, file.name);
+    formData.append('file', file, file.name);
+    //formData.append('questionFile', file, file.name);
 
-    xhr.open('POST', "/question/uploadForEdit", true);
+    //xhr.open('POST', "/question/uploadForEdit", true);
+    xhr.open('POST', "/api/upload", true);
     let token = document.querySelector("meta[name='_csrf']").content;
     //let header = document.querySelector("meta[name='_csrf_header']").content;
     const header = "X-CSRF-TOKEN";
     xhr.setRequestHeader(header, token);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    //xhr.setRequestHeader('Content-Type', 'multipart/form-data');
     xhr.onload = function () {
         if (xhr.status === 200) {
             if (xhr.responseText != null) {

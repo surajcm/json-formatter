@@ -1,3 +1,3 @@
 ## Udemy JSON formatter
 
-To format and edit JSO for udemy question course.
+To format and edit JSON for udemy question course.

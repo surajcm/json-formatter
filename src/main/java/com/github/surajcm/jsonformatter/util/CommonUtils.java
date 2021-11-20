@@ -1,4 +1,4 @@
-package com.github.surajcm.udemyjsonformatter.util;
+package com.github.surajcm.jsonformatter.util;
 
 public class CommonUtils {
 

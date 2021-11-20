@@ -1,4 +1,4 @@
-package com.github.surajcm.udemyjsonformatter;
+package com.github.surajcm.jsonformatter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

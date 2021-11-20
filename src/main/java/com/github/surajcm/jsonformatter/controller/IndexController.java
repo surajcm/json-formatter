@@ -1,4 +1,4 @@
-package com.github.surajcm.udemyjsonformatter.controller;
+package com.github.surajcm.jsonformatter.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

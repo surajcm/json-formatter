@@ -18,11 +18,16 @@
         <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
             <div class="logoarea pt-5 pb-5">
                 <form class="row g-3">
-                    <div class="col-auto">
-                        <input class="form-control" type="file" id="questionFile">
+                    <div id="selectQuestion">
+                        <div class="col-auto">
+                            <input class="form-control" type="file" id="questionFile">
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" onclick="getQuestion();" class="btn btn-primary mb-3">Fetch Question</button>
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        <button type="button" onclick="getQuestion();" class="btn btn-primary mb-3">Fetch Question</button>
+                    <div id="questionBody">
+
                     </div>
                 </form>
             </div>

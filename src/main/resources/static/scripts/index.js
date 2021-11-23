@@ -31,7 +31,11 @@ function createQuestionForDisplay(textReturned) {
     const question = JSON.parse(textReturned);
     let questionBody = document.getElementById("questionBody");
     questionBody.appendChild(createButtonsForQuestionNumber(question.number));
-    questionBody.appendChild(createTextForQuestion(question.question));
+    questionBody.appendChild(createTextArea(question.question));
+    questionBody.appendChild(createOptions(question.options));
+    questionBody.appendChild(createTextArea(question.explanation));
+    questionBody.appendChild(createText(question.reference));
+    questionBody.appendChild(createText(question.tags));
 }
 
 function createButtonsForQuestionNumber(number) {
@@ -46,10 +50,29 @@ function createButtonsForQuestionNumber(number) {
     return divNumber;
 }
 
-function createTextForQuestion(q) {
+function createOptions(opt) {
+    let divOpt = document.createElement("div");
+    divOpt.setAttribute("class", "col-md-12");
+    console.log('total # of options are :'+ opt.length);
+    const isOption = findOptionOrCheckBoxFromFirst(opt[0]);
+    //let txtQ = aTextBox("id", opt);
+    //divOpt.appendChild(txtQ);
+    return divOpt;
+}
+
+function findOptionOrCheckBoxFromFirst(firstOption) {
+    if (firstOption.type === "radio") {
+        console.log("it is radio");
+    } else {
+        console.log("it is check box");
+    }
+    return false;
+}
+
+function createText(q) {
     let divQText = document.createElement("div");
     divQText.setAttribute("class", "col-md-12");
-    let txtQ = aTextBox("question", q);
+    let txtQ = aTextBox("id", q);
     divQText.appendChild(txtQ);
     return divQText;
 }
@@ -61,6 +84,23 @@ function aTextBox(id, value) {
     txtBox.setAttribute("value", value);
     txtBox.setAttribute("id", id);
     return txtBox;
+}
+
+function createTextArea(q) {
+    let divQText = document.createElement("div");
+    divQText.setAttribute("class", "col-md-12");
+    let txtQ = aTextArea("id", q);
+    divQText.appendChild(txtQ);
+    return divQText;
+}
+
+function aTextArea(id, value) {
+    let txtArea = document.createElement("textarea");
+    txtArea.setAttribute("rows", "3");
+    txtArea.setAttribute("class", "form-control");
+    txtArea.setAttribute("id", id);
+    txtArea.value = value;
+    return txtArea;
 }
 
 function aButton(id, text) {

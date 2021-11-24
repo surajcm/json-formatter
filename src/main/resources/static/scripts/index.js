@@ -1,3 +1,4 @@
+
 function getQuestion() {
     // call ajax to get the question
     let questionFile = document.getElementById('questionFile');
@@ -54,19 +55,79 @@ function createOptions(opt) {
     let divOpt = document.createElement("div");
     divOpt.setAttribute("class", "col-md-12");
     console.log('total # of options are :'+ opt.length);
-    const isOption = findOptionOrCheckBoxFromFirst(opt[0]);
-    //let txtQ = aTextBox("id", opt);
-    //divOpt.appendChild(txtQ);
+    const isOption = isSingleSelect(opt[0]);
+    for (let i = 0; i < opt.length; i++) {
+        console.log(opt[i].text);
+        const optId = 'o' + i;
+        let isAnswer = isAnswerSelected(opt[i].isAnswer);
+        console.log(isAnswer);
+        if (isOption) {
+            const option = aRadioInDiv(optId, opt[i].text, isAnswer);
+            divOpt.appendChild(option);
+        } else {
+            const option = aCheckBoxInDiv(optId, opt[i].text, isAnswer);
+            divOpt.appendChild(option);
+        }
+    }
     return divOpt;
 }
 
-function findOptionOrCheckBoxFromFirst(firstOption) {
-    if (firstOption.type === "radio") {
-        console.log("it is radio");
-    } else {
-        console.log("it is check box");
+function isAnswerSelected(answerString) {
+    return answerString === "true";
+}
+
+function isSingleSelect(firstOption) {
+    return firstOption.type === "radio";
+}
+
+function aCheckBox(id, isChecked) {
+    let check = document.createElement("input");
+    check.setAttribute("type", "check");
+    check.setAttribute("class", "form-check-input");
+    check.setAttribute("id", id);
+    if (isChecked) {
+        check.checked = true;
     }
-    return false;
+    return check;
+}
+
+function aRadioBox(id, isChecked) {
+    let radio = document.createElement("input");
+    radio.setAttribute("type", "radio");
+    radio.setAttribute("class", "form-check-input");
+    radio.setAttribute("id", id);
+    if (isChecked) {
+        radio.checked = true;
+    }
+    return radio;
+}
+
+function aRadioInDiv(id, value, isChecked) {
+    let divRadio = document.createElement("div");
+    divRadio.setAttribute("class", "form-check");
+    const option = aRadioBox(id, isChecked);
+    const radioLabel = labelForRadio(id, value);
+    divRadio.appendChild(option);
+    divRadio.appendChild(radioLabel);
+    return divRadio;
+}
+
+function aCheckBoxInDiv(id, value, isChecked) {
+    let divRadio = document.createElement("div");
+    divRadio.setAttribute("class", "form-check");
+    const option = aCheckBox(id, isChecked);
+    const radioLabel = labelForRadio(id, value);
+    divRadio.appendChild(option);
+    divRadio.appendChild(radioLabel);
+    return divRadio;
+}
+
+function labelForRadio(forField, text) {
+    let label = document.createElement("label");
+    label.setAttribute("class", "form-check-label");
+    label.innerHTML = text;
+    label.setAttribute("for", forField);
+    return label;
 }
 
 function createText(q) {
